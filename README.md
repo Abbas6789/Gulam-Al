@@ -1,1 +1,0 @@
-# Gulam-Al
