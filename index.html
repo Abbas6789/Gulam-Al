@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghulam AI V3.5 | Supreme Master</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap');
+        :root { --gold: #D4AF37; --deep-bg: #050505; }
+        body { background-color: var(--deep-bg); color: white; font-family: sans-serif; overflow-x: hidden; }
+        .urdu { font-family: 'Noto Nastaliq Urdu', serif; line-height: 2.5; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .hidden { display: none; }
+        .step-locked { filter: grayscale(1) opacity(0.3); pointer-events: none; }
+        .gold-glow { box-shadow: 0 0 20px rgba(212, 175, 55, 0.15); border: 1px solid var(--gold); }
+        .admin-toggle { width: 44px; height: 22px; background: #333; border-radius: 11px; position: relative; cursor: pointer; transition: 0.3s; }
+        .admin-toggle.active { background: var(--gold); }
+        .admin-toggle::after { content: ''; position: absolute; width: 18px; height: 18px; background: white; border-radius: 50%; top: 2px; left: 2px; transition: 0.3s; }
+        .admin-toggle.active::after { left: 24px; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HEADER & GLOBAL WALLET (Fixed Placement) -->
+    <nav class="fixed top-0 left-0 right-0 z-[100] p-4 glass flex justify-between items-center border-b border-white/5">
+        <div class="flex items-center gap-2">
+            <div class="bg-gradient-to-br from-yellow-600 to-yellow-300 p-2 rounded-xl">
+                <i class="fas fa-microchip text-black"></i>
+            </div>
+            <span class="font-black tracking-tighter text-sm italic">GHULAM AI V3.5</span>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <div id="wallet-header" class="bg-black/60 px-4 py-1 rounded-full border border-yellow-600/30 cursor-pointer" onclick="showPage('wallet-page')">
+                <div class="text-[10px] text-gray-500 text-center uppercase">Balance</div>
+                <div class="flex items-center gap-2">
+                    <span id="nav-coins" class="text-yellow-500 font-bold text-sm">0.00</span>
+                    <span class="text-[10px] text-gray-400">Coins</span>
+                </div>
+            </div>
+            
+            <button onclick="toggleDropMenu()" class="text-gray-400 p-1"><i class="fas fa-ellipsis-v"></i></button>
+        </div>
+
+        <!-- HIDDEN MENU -->
+        <div id="drop-menu" class="hidden absolute left-4 top-16 w-52 glass rounded-2xl p-2 border border-white/10 shadow-2xl">
+            <button onclick="openAdminGate()" class="w-full text-right p-3 hover:bg-yellow-600/10 rounded-xl urdu text-sm">ایڈمن ڈیش بورڈ 🔐</button>
+            <button onclick="showPage('home-page')" class="w-full text-right p-3 hover:bg-white/5 rounded-xl urdu text-sm">ہوم اسکرین</button>
+        </div>
+    </nav>
+
+    <main class="mt-24 p-5 max-w-lg mx-auto pb-28">
+
+        <!-- PAGE 1: HOME PAGE -->
+        <div id="home-page" class="page-content">
+            <div class="text-center mb-10">
+                <h1 class="urdu text-3xl mb-3">خوش آمدید، میرے عزیز دوست</h1>
+                <p class="text-yellow-600 text-[10px] tracking-[5px] uppercase font-bold">The Voice of Love & Wisdom</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="showPage('scanner-page')" class="col-span-2 p-10 glass rounded-[50px] flex flex-col items-center gap-4 gold-glow">
+                    <span class="text-6xl">✋</span>
+                    <span class="font-bold text-xl">SPIRITUAL SCANNER</span>
+                    <p class="urdu text-xs text-gray-400">اپنی قسمت اور روحانیت کا سفر شروع کریں</p>
+                </button>
+                <button onclick="showPage('media-lab')" class="p-8 glass rounded-[40px] flex flex-col items-center gap-3">
+                    <i class="fas fa-clapperboard text-3xl text-blue-400"></i>
+                    <span class="text-xs font-bold">MEDIA LAB</span>
+                </button>
+                <button onclick="showPage('wallet-page')" class="p-8 glass rounded-[40px] flex flex-col items-center gap-3">
+                    <i class="fas fa-chart-line text-3xl text-green-400"></i>
+                    <span class="text-xs font-bold">WALLET</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- PAGE 2: SPIRITUAL SCANNER (THE CORE FEATURE) -->
+        <div id="scanner-page" class="page-content hidden">
+            <!-- Phase 1: Surah Yaseen -->
+            <div class="glass p-6 rounded-[40px] border-t-4 border-yellow-600 mb-8 text-center shadow-2xl">
+                <p class="urdu text-2xl mb-4 text-yellow-500">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+                <div class="bg-black/40 p-4 rounded-2xl border border-white/5 mb-4">
+                    <p class="urdu text-sm italic">"یسٓ۔ وَالْقُرْاٰنِ الْحَكِیْمِ۔ اِنَّكَ لَمِنَ الْمُرْسَلِیْنَ۔"</p>
+                </div>
+                <p class="text-[10px] text-gray-500 animate-pulse">Heart-touching audio of Surah Yaseen playing...</p>
+                <audio id="recitation" src="https://server8.mp3quran.net/afs/036.mp3"></audio>
+            </div>
+
+            <!-- Intake Logic -->
+            <div id="scanner-intake" class="space-y-6">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="text-[10px] text-gray-500 uppercase ml-2">Date of Birth</label>
+                        <input type="date" id="user-dob" class="w-full p-4 glass rounded-2xl outline-none text-xs border border-white/10">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] text-gray-500 uppercase ml-2">Time of Birth</label>
+                        <input type="time" id="user-time" class="w-full p-4 glass rounded-2xl outline-none text-xs border border-white/10">
+                    </div>
+                </div>
+
+                <!-- Sequential Upload -->
+                <div class="space-y-3">
+                    <div id="step-1" class="p-5 glass rounded-3xl flex justify-between items-center border-l-4 border-yellow-500">
+                        <div>
+                            <p class="text-xs font-bold uppercase tracking-widest">Step 1: Right Hand</p>
+                            <p class="urdu text-[10px] text-gray-400">موجودہ اعمال اور کرما</p>
+                        </div>
+                        <input type="file" id="up-1" class="hidden" onchange="unlockNext(2)">
+                        <label for="up-1" class="bg-yellow-600 text-black px-5 py-2 rounded-xl text-[10px] font-bold">UPLOAD</label>
+                    </div>
+
+                    <div id="step-2" class="p-5 glass rounded-3xl flex justify-between items-center step-locked">
+                        <div>
+                            <p class="text-xs font-bold uppercase tracking-widest">Step 2: Left Hand</p>
+                            <p class="urdu text-[10px] text-gray-400">وراثتی مقدر اور بنیاد</p>
+                        </div>
+                        <input type="file" id="up-2" class="hidden" onchange="unlockNext(3)">
+                        <label for="up-2" class="bg-yellow-600 text-black px-5 py-2 rounded-xl text-[10px] font-bold">UPLOAD</label>
+                    </div>
+
+                    <div id="step-3" class="p-5 glass rounded-3xl flex justify-between items-center step-locked">
+                        <div>
+                            <p class="text-xs font-bold uppercase tracking-widest">Step 3: Face Scan</p>
+                            <p class="urdu text-[10px] text-gray-400">روحانی کیفیت اور چہرہ</p>
+                        </div>
+                        <input type="file" id="up-3" class="hidden" onchange="runGeminiEngine()">
+                        <label for="up-3" class="bg-yellow-600 text-black px-5 py-2 rounded-xl text-[10px] font-bold">FINISH</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result Area -->
+            <div id="analysis-box" class="hidden mt-10 p-8 glass rounded-[40px] border-2 border-yellow-600/30">
+                <div class="flex justify-center mb-6">
+                    <div class="w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center animate-bounce shadow-2xl shadow-yellow-600/50">
+                        <i class="fas fa-heart text-black text-2xl"></i>
+                    </div>
+                </div>
+                <div id="ai-response-text" class="urdu text-lg text-center text-white leading-relaxed"></div>
+                <div class="mt-8 pt-6 border-t border-white/10">
+                    <p class="text-[10px] text-yellow-500 uppercase tracking-widest text-center mb-4">Viral Hashtags</p>
+                    <div id="viral-tags" class="text-[10px] text-gray-400 text-center bg-black/40 p-4 rounded-2xl border border-white/5"></div>
+                </div>
+                <button onclick="speakResult()" class="w-full mt-6 py-4 bg-white/5 rounded-2xl font-bold uppercase text-xs tracking-[3px]"><i class="fas fa-volume-up mr-2"></i> Listen Analysis</button>
+            </div>
+        </div>
+
+        <!-- PAGE 3: WALLET & 50 LEVELS -->
+        <div id="wallet-page" class="page-content hidden">
+            <div class="text-center mb-8">
+                <h2 class="urdu text-2xl">گلوبل والٹ اور لیول</h2>
+            </div>
+            
+            <div class="glass p-10 rounded-[50px] border border-yellow-600/20 text-center relative overflow-hidden mb-8">
+                <div class="absolute -right-10 -top-10 w-40 h-40 bg-yellow-600/10 rounded-full blur-3xl"></div>
+                <p class="text-[10px] text-gray-500 uppercase tracking-[4px] mb-2">Your Progress</p>
+                <h3 class="text-6xl font-black text-yellow-500 mb-4">LVL <span id="level-num">1</span></h3>
+                
+                <div class="w-full bg-white/5 h-2 rounded-full mb-4">
+                    <div class="bg-gradient-to-r from-yellow-700 to-yellow-400 h-full w-[10%] rounded-full shadow-[0_0_15px_#d4af37]"></div>
+                </div>
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest">50 Levels Journey to Success</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4">
+                <div class="p-6 glass rounded-3xl flex justify-between items-center">
+                    <span class="text-xs uppercase font-bold text-gray-400">Current Balance</span>
+                    <span class="text-xl font-black text-yellow-500">0.00 Coins</span>
+                </div>
+                <div class="p-6 glass rounded-3xl border-dashed border-white/20">
+                    <p class="text-[10px] text-gray-500 uppercase mb-2">Referral Link</p>
+                    <div class="flex gap-2">
+                        <input type="text" readonly value="https://app.ghulam.ai/reg?ref=786" class="bg-black/40 flex-1 p-3 rounded-xl text-[10px] outline-none border border-white/5">
+                        <button class="bg-yellow-600 text-black px-4 rounded-xl text-xs font-bold">COPY</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 4: MASTER ADMIN PANEL -->
+        <div id="admin-page" class="page-content hidden">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-xl font-black tracking-tighter text-yellow-500 uppercase italic">Master Dashboard</h2>
+                <button onclick="showPage('home-page')" class="text-[10px] bg-white/10 px-4 py-2 rounded-full uppercase">Close</button>
+            </div>
+
+            <div class="space-y-4">
+                <div class="p-6 glass rounded-3xl flex justify-between items-center border border-white/5">
+                    <span class="text-xs font-bold uppercase tracking-widest">Withdrawal Status</span>
+                    <div class="admin-toggle active" onclick="toggleSwitch(this)"></div>
+                </div>
+                <div class="p-6 glass rounded-3xl flex justify-between items-center border border-white/5">
+                    <span class="text-xs font-bold uppercase tracking-widest">Referral Engine</span>
+                    <div class="admin-toggle active" onclick="toggleSwitch(this)"></div>
+                </div>
+                <div class="p-6 glass rounded-3xl flex justify-between items-center border border-white/5">
+                    <span class="text-xs font-bold uppercase tracking-widest">Video Media Lab</span>
+                    <div class="admin-toggle" onclick="toggleSwitch(this)"></div>
+                </div>
+                <div class="p-6 glass rounded-3xl flex justify-between items-center border border-white/5">
+                    <span class="text-xs font-bold uppercase tracking-widest">AI Scanner VIP Lock</span>
+                    <div class="admin-toggle active" onclick="toggleSwitch(this)"></div>
+                </div>
+
+                <div class="mt-8 p-6 glass rounded-[40px] border border-yellow-600/10">
+                    <p class="text-[10px] text-gray-500 uppercase mb-6 tracking-[2px]">Global Configuration</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-[10px] text-gray-500 ml-2">Coin Exchange Rate (1 Coin = PKR)</label>
+                            <input type="number" value="280" class="w-full mt-2 p-4 bg-black/50 rounded-2xl outline-none border border-white/5 text-yellow-500 font-bold">
+                        </div>
+                        <button class="w-full py-5 bg-white text-black font-black rounded-2xl text-[10px] uppercase shadow-2xl">Save Master Settings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ADMIN AUTH OVERLAY -->
+    <div id="admin-gate" class="hidden fixed inset-0 z-[1000] bg-black/95 backdrop-blur-3xl flex items-center justify-center p-8">
+        <div class="w-full max-w-sm glass p-10 rounded-[50px] border border-yellow-600/20 shadow-2xl shadow-yellow-600/10">
+            <div class="text-center mb-8">
+                <div class="inline-block p-5 bg-yellow-600 rounded-full mb-6"><i class="fas fa-lock text-black text-2xl"></i></div>
+                <h3 class="urdu text-xl">خفیہ ایڈمن رسائی</h3>
+                <p class="text-[10px] text-gray-500 mt-2 uppercase tracking-widest">Master Identity Required</p>
+            </div>
+            <input type="password" id="master-pass" placeholder="PASSWORD" class="w-full p-5 bg-black/50 rounded-2xl outline-none border border-white/10 text-center tracking-[10px] mb-4">
+            <button onclick="checkMasterKey()" class="w-full py-5 bg-yellow-600 text-black font-black rounded-2xl text-[10px] shadow-2xl shadow-yellow-600/30">UNLOCK DASHBOARD</button>
+            <button onclick="closeAdminGate()" class="w-full mt-4 text-[10px] text-gray-500 uppercase font-bold">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. NAVIGATION & INITIALIZATION
+        function showPage(id) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+            document.getElementById('drop-menu').classList.add('hidden');
+            window.scrollTo(0,0);
+            
+            if(id === 'scanner-page') {
+                document.getElementById('recitation').play();
+            } else {
+                document.getElementById('recitation').pause();
+            }
+        }
+
+        function toggleDropMenu() {
+            document.getElementById('drop-menu').classList.toggle('hidden');
+        }
+
+        // 2. SCANNER LOGIC
+        function unlockNext(step) {
+            document.getElementById(`step-${step}`).classList.remove('step-locked');
+        }
+
+        async function runGeminiEngine() {
+            const intake = document.getElementById('scanner-intake');
+            const resultBox = document.getElementById('analysis-box');
+            const responseText = document.getElementById('ai-response-text');
+            const tagBox = document.getElementById('viral-tags');
+
+            intake.classList.add('hidden');
+            resultBox.classList.remove('hidden');
+            responseText.innerHTML = "تجزیہ ہو رہا ہے... <br><span class='text-xs'>The Wise Teacher is reading your soul.</span>";
+
+            // Compassionate Response Simulation (Matches the Instruction)
+            const simulatedResponse = "میرے عزیز دوست، السلام علیکم! آپ کے زائچے اور ہاتھوں کی لکیریں بتاتی ہیں کہ آپ نے اپنی زندگی میں بہت محنت کی ہے۔ اگرچہ ماضی میں کچھ مشکلات نظر آ رہی ہیں، لیکن آپ کا مستقبل امید اور روشنی سے بھرا ہوا ہے۔ اللہ کے فضل سے، آپ کے چہرے کی مسکراہٹ آپ کی صاف دلی کی علامت ہے۔ آپ کو مشورہ ہے کہ اپنی روحانیت کو مزید مضبوط کریں اور نماز کی پابندی جاری رکھیں۔ گھبرائیں نہیں، بڑی کامیابی آپ کی منتظر ہے۔";
+            
+            const viralTags = "#GhulamAI #SpiritualGuidance #WiseTeacher #SuccessMindset #ViralVideo #PakistanAI";
+            const postingTime = "Best Time to Post: 9:00 PM to 11:00 PM PKT";
+
+            setTimeout(() => {
+                responseText.innerText = simulatedResponse;
+                tagBox.innerText = viralTags + "\n\n" + postingTime;
+                speakResult(simulatedResponse);
+            }, 3000);
+        }
+
+        function speakResult(text) {
+            const content = text || document.getElementById('ai-response-text').innerText;
+            const speech = new SpeechSynthesisUtterance(content);
+            speech.lang = 'ur-PK';
+            speech.rate = 0.9;
+            window.speechSynthesis.speak(speech);
+        }
+
+        // 3. ADMIN GATE
+        function openAdminGate() { document.getElementById('admin-gate').classList.remove('hidden'); }
+        function closeAdminGate() { document.getElementById('admin-gate').classList.add('hidden'); }
+        
+        function checkMasterKey() {
+            const key = document.getElementById('master-pass').value;
+            if(key === "GHULAM_MASTER_786") {
+                closeAdminGate();
+                showPage('admin-page');
+            } else {
+                alert("غلط پاس ورڈ! آپ کے پاس اختیار نہیں ہے۔");
+            }
+        }
+
+        function toggleSwitch(el) { el.classList.toggle('active'); }
+
+        window.onload = () => { console.log("Ghulam AI Architecture V3.5 Live."); };
+    </script>
+</body>
+  </html>
+  
